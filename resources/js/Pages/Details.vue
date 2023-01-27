@@ -20,6 +20,7 @@
   ```
 -->
 <template>
+  <AppLayout>
     <div class="bg-white">
       <div class="pt-6">
         <nav aria-label="Breadcrumb">
@@ -159,12 +160,14 @@
         </div>
       </div>
     </div>
+  </AppLayout>
   </template>
   
   <script setup>
   import { ref } from 'vue'
-  // import { StarIcon } from '@heroicons/vue/24/solid'
-  // import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
+  import { StarIcon } from '@heroicons/vue/24/solid'
+  import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
+  import AppLayout from '@/Layouts/AppLayout.vue';
   
   const product = {
     name: 'Basic Tee 6-Pack',

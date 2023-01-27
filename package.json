@@ -21,6 +21,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.7",
         "@heroicons/vue": "^2.0.14",
         "heroicons": "^2.0.14",
         "npm-watch": "^0.11.0"
