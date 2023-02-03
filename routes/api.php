@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/fetch', [DatabaseController::class, 'fetchData']);
+Route::get('/post', [DatabaseController::class, 'fetchData']);
