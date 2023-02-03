@@ -9,6 +9,7 @@ class DatabaseController extends Controller
 {
     public function fetchData() {
         $data = DB::table('migrations')->get();
-        return view('index', compact('data'));
+
+        return response()->json($data);
     }
 }
