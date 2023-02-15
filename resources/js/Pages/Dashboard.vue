@@ -74,6 +74,7 @@
                 </div>
             </main>
         </div>
+        
     </AppLayout>
 </template>
   

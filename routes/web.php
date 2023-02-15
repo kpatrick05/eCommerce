@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DatabaseController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,6 +26,25 @@ Route::get('/', function () {
     ]);
 });
 
+Route::middleware(['guestOrVerified'])->group(function () {
+    Route::prefix('/cart')->name('cart.')->group(function () {
+        Route::get('/', [CartController::class, 'index'])->name('index');
+        Route::post('/add/{id}', [CartController::class, 'add'])->name('add');
+        Route::post('/remove/{id}', [CartController::class, 'remove'])->name('remove');
+        Route::post('/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('update-quantity');
+
+    });
+    // Route::get('/dashboard', function () {
+    //     return Inertia::render('Dashboard');
+    // }
+    // )->name('dashboard');
+    // Route::get('/products', [DatabaseController::class, 'show']
+    // )->name('products');
+    // Route::get('/products/{id}', [DatabaseController::class, 'showById']
+    // )->name('product.details');
+    // Route::get('/cart', [CartController::class, 'index']
+    // )->name('cart');
+});
 
 Route::middleware([
     'auth:sanctum',
@@ -34,15 +55,14 @@ Route::middleware([
         return Inertia::render('Dashboard');
     }
     )->name('dashboard');
-    Route::get('/products', function () {
-        return Inertia::render('Products');
-    }
+    Route::get('/products', [DatabaseController::class, 'show']
     )->name('products');
-    Route::get('/details', function () {
-        return Inertia::render('Details');
-    }
-    )->name('details');
-    
+    Route::get('/products/{id}', [DatabaseController::class, 'showById']
+    )->name('product.details');
+    Route::get('/cart', [CartController::class, 'index']
+    )->name('cart');
 });
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+
 
 

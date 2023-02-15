@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/fetch', [DatabaseController::class, 'fetchData']);
-Route::get('/post', [DatabaseController::class, 'fetchData']);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+});
+Route::get('/fetch/{id}', [DatabaseController::class, 'fetchDataById']);
+Route::get('/fetch', [DatabaseController::class, 'fetchAll']);
+// Route::post('/cart/add', [CartController::class, 'add'])->name('add');

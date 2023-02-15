@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed} from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
@@ -7,12 +7,14 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import store from '../store';
 
 
 defineProps({
     title: String,
 });
 
+const test = computed(() => store.state.test)
 const showingNavigationDropdown = ref(false);
 
 const switchToTeam = (team) => {
@@ -26,16 +28,17 @@ const switchToTeam = (team) => {
 const logout = () => {
     router.post(route('logout'));
 };
-const navLinks = ["dashboard", "products", "details"]
+const navLinks = ["dashboard", "products", "cart"]
 </script>
 
 <template>
     <div>
+    {{ test }}
         <Head :title="title" />
 
         <Banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
