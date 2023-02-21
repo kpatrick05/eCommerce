@@ -7,14 +7,13 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import store from '../store';
 
 
 defineProps({
     title: String,
 });
 
-const test = computed(() => store.state.test)
+
 const showingNavigationDropdown = ref(false);
 
 const switchToTeam = (team) => {

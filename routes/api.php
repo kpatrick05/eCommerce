@@ -24,6 +24,3 @@ Route::middleware([
     'verified',
 ])->group(function () {
 });
-Route::get('/fetch/{id}', [DatabaseController::class, 'fetchDataById']);
-Route::get('/fetch', [DatabaseController::class, 'fetchAll']);
-// Route::post('/cart/add', [CartController::class, 'add'])->name('add');

@@ -23,6 +23,7 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.7",
         "@heroicons/vue": "^2.0.14",
+        "font-awesome": "^4.7.0",
         "heroicons": "^2.0.14",
         "npm-watch": "^0.11.0",
         "sweetalert": "^2.1.2"
