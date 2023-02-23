@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DatabaseController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,14 +28,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['guestOrVerified'])->group(function () {
-    Route::prefix('/cart')->name('cart.')->group(function () {
-        Route::get('/', [CartController::class, 'index'])->name('index');
-        Route::post('/add/{id}', [CartController::class, 'add'])->name('add');
-        Route::post('/remove/{id}', [CartController::class, 'remove'])->name('remove');
-        Route::post('/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('update-quantity');
+// Route::middleware(['guestOrVerified'])->group(function () {
+//     Route::prefix('/cart')->name('cart.')->group(function () {
+//         Route::get('/', [CartController::class, 'index'])->name('index');
+//         Route::post('/add/{id}', [CartController::class, 'add'])->name('add');
+//         Route::post('/remove/{id}', [CartController::class, 'remove'])->name('remove');
+//         Route::post('/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('update-quantity');
 
-    });
+//     });
     // Route::get('/dashboard', function () {
     //     return Inertia::render('Dashboard');
     // }
@@ -44,7 +46,7 @@ Route::middleware(['guestOrVerified'])->group(function () {
     // )->name('product.details');
     // Route::get('/cart', [CartController::class, 'index']
     // )->name('cart');
-});
+// });
 
 Route::middleware([
     'auth:sanctum',
@@ -63,9 +65,12 @@ Route::middleware([
     )->name('cart');
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/removequant/{product_id}', [CartController::class, 'removeQuantity'])->name('cart.remove.quantity');
+    Route::post('/cart/addquant/{product_id}', [CartController::class, 'addQuantity'])->name('cart.add.quantity');
+    Route::post('/cart/checkout', [CheckoutController::class, 'checkout'])->name('cart.checkout');
+    Route::get('/cart/succes', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/cart/failure', [CheckoutController::class, 'failure'])->name('checkout.failure');
 });
-Route::post('/cart/addquant/{product_id}', [CartController::class, 'addQuantity'])->name('cart.add.quantity');
-Route::post('/cart/removequant/{product_id}', [CartController::class, 'removeQuantity'])->name('cart.remove.quantity');
 
 
 

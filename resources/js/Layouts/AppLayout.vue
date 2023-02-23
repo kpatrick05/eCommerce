@@ -32,7 +32,7 @@ const navLinks = ["dashboard", "products", "cart"]
 
 <template>
     <div>
-    {{ test }}
+
         <Head :title="title" />
 
         <Banner />
@@ -55,8 +55,9 @@ const navLinks = ["dashboard", "products", "cart"]
                                 <NavLink :href="route(link)" :active="route().current(link)" class="uppercase">
                                     {{ link }}
                                 </NavLink>
-                              
+                                
                             </div>
+                        
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

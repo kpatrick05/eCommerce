@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
 
 class CartController extends Controller
@@ -126,4 +127,5 @@ class CartController extends Controller
         }
 
     }
+   
 }

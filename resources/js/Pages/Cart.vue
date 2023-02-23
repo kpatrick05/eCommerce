@@ -99,8 +99,8 @@
                             <span>Total cost</span>
                             <span>${{ costWithShipping }}</span>
                         </div>
-                        <button
-                            class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-md">Checkout</button>
+                        <Link :href="`/cart/checkout`" method="post" as="button"
+                            class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full rounded-md">Checkout</Link>
                     </div>
                 </div>
 
