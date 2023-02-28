@@ -3,9 +3,9 @@
 <!-- This example requires Tailwind CSS v3.0+ -->
 <template>
     <AppLayout>
-        <div class="isolate bg-white">
-       
-        </div>
+       <div class="container m-auto w-[400px] text-white bg-red-500 mt-5 py-2 px-3 rounded">
+       <h1 v-if="message">{{ message }}</h1>
+       </div>
     </AppLayout>
 </template>
   
@@ -13,5 +13,8 @@
 import { ref } from 'vue'
 
 import AppLayout from '@/Layouts/AppLayout.vue';
+defineProps({
+    message : String
+})
 
 </script>

@@ -1439,16 +1439,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.1.3",
+            "version": "v10.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "12256504186326a9d02b2ab3b43a4031a59b52d1"
+                "reference": "da95415a83fe6216dc78efebfc311365cf4cade0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/12256504186326a9d02b2ab3b43a4031a59b52d1",
-                "reference": "12256504186326a9d02b2ab3b43a4031a59b52d1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/da95415a83fe6216dc78efebfc311365cf4cade0",
+                "reference": "da95415a83fe6216dc78efebfc311365cf4cade0",
                 "shasum": ""
             },
             "require": {
@@ -1635,7 +1635,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-02-22T14:38:35+00:00"
+            "time": "2023-02-23T12:25:38+00:00"
         },
         {
             "name": "laravel/jetstream",
@@ -3735,16 +3735,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v10.6.1",
+            "version": "v10.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "7e9aca1e4cf703fcfec48e2db5bb69ac7a143f4b"
+                "reference": "91876a7dd88148f8b4bac6e3202503312ae5d581"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7e9aca1e4cf703fcfec48e2db5bb69ac7a143f4b",
-                "reference": "7e9aca1e4cf703fcfec48e2db5bb69ac7a143f4b",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/91876a7dd88148f8b4bac6e3202503312ae5d581",
+                "reference": "91876a7dd88148f8b4bac6e3202503312ae5d581",
                 "shasum": ""
             },
             "require": {
@@ -3790,9 +3790,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v10.6.1"
+                "source": "https://github.com/stripe/stripe-php/tree/v10.7.0"
             },
-            "time": "2023-02-21T16:50:16+00:00"
+            "time": "2023-02-23T23:30:31+00:00"
         },
         {
             "name": "symfony/console",

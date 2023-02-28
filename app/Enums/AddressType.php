@@ -9,4 +9,4 @@ enum AddressType: string
 {
     case Shipping = 'shipping';
     case Billing = 'billing';
-}
+}a

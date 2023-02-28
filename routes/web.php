@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DatabaseController;
-
+use App\Http\Controllers\WebhookController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,26 +29,6 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::middleware(['guestOrVerified'])->group(function () {
-//     Route::prefix('/cart')->name('cart.')->group(function () {
-//         Route::get('/', [CartController::class, 'index'])->name('index');
-//         Route::post('/add/{id}', [CartController::class, 'add'])->name('add');
-//         Route::post('/remove/{id}', [CartController::class, 'remove'])->name('remove');
-//         Route::post('/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('update-quantity');
-
-//     });
-    // Route::get('/dashboard', function () {
-    //     return Inertia::render('Dashboard');
-    // }
-    // )->name('dashboard');
-    // Route::get('/products', [DatabaseController::class, 'show']
-    // )->name('products');
-    // Route::get('/products/{id}', [DatabaseController::class, 'showById']
-    // )->name('product.details');
-    // Route::get('/cart', [CartController::class, 'index']
-    // )->name('cart');
-// });
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -63,14 +44,18 @@ Route::middleware([
     )->name('product.details');
     Route::get('/cart', [CartController::class, 'index']
     )->name('cart');
-    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::post('/cart/removequant/{product_id}', [CartController::class, 'removeQuantity'])->name('cart.remove.quantity');
     Route::post('/cart/addquant/{product_id}', [CartController::class, 'addQuantity'])->name('cart.add.quantity');
     Route::post('/cart/checkout', [CheckoutController::class, 'checkout'])->name('cart.checkout');
-    Route::get('/cart/succes', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/cart/success', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/cart/failure', [CheckoutController::class, 'failure'])->name('checkout.failure');
 });
+Route::post('/webhook/stripe', [WebhookController::class, 'webhook'])->name('webhook.stripe');
 
-
+Route::middleware(['admin'])->group(function () { 
+    Route::get('/manage', [AdminController::class, 'index']
+    )->name('manage');
+});
 
