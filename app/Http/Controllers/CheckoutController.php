@@ -67,6 +67,8 @@ class CheckoutController extends Controller
 
     Payment::create($paymentData);
 
+    CartItem::where(['user_id' => $user->id])->delete();
+
     return response('', 409)
       ->header('X-Inertia-Location', $checkout_session->url);
     //   return redirect()->to($checkout_session->url);
@@ -91,8 +93,6 @@ class CheckoutController extends Controller
 
       $order->status = OrderStatus::Paid;
       $order->update();
-
-      CartItem::where(['user_id' => $user->id])->delete();
 
       $customer = $stripe->customers->retrieve($session->customer);
       return Inertia::render('Success', [
