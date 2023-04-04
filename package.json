@@ -23,9 +23,11 @@
     "dependencies": {
         "@headlessui/vue": "^1.7.7",
         "@heroicons/vue": "^2.0.14",
+        "apexcharts": "^3.37.2",
         "font-awesome": "^4.7.0",
         "heroicons": "^2.0.14",
         "npm-watch": "^0.11.0",
-        "sweetalert": "^2.1.2"
+        "sweetalert": "^2.1.2",
+        "vue3-apexcharts": "^1.4.1"
     }
 }

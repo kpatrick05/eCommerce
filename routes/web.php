@@ -55,7 +55,13 @@ Route::middleware([
 Route::post('/webhook/stripe', [WebhookController::class, 'webhook'])->name('webhook.stripe');
 
 Route::middleware(['admin'])->group(function () { 
-    Route::get('/manage', [AdminController::class, 'index']
-    )->name('manage');
+    Route::get('/reports', [AdminController::class, 'index']
+    )->name('reports');
+    Route::get('/users', [AdminController::class, 'user']
+    )->name('users');
+    Route::get('/product/{id}', [AdminController::class, 'edit']
+    )->name('product.edit');
+    Route::put('/product/{id}', [AdminController::class, 'update']
+    )->name('product.update');
 });
 

@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed} from 'vue';
-import { Head, Link, router } from '@inertiajs/vue3';
+import { ref } from 'vue';
+import { Head, Link, router} from '@inertiajs/vue3';
 import ApplicationMark from '@/Components/ApplicationMark.vue';
 import Banner from '@/Components/Banner.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -9,9 +9,6 @@ import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
 
-defineProps({
-    title: String,
-});
 
 
 const showingNavigationDropdown = ref(false);
@@ -32,11 +29,9 @@ const navLinks = ["dashboard", "products", "cart"]
 
 <template>
     <div>
-
         <Head :title="title" />
 
         <Banner />
-
         <div class="min-h-screen bg-white">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -57,6 +52,14 @@ const navLinks = ["dashboard", "products", "cart"]
                                 </NavLink>
                                 
                             </div>
+                            <div v-if="$page.props.user.is_admin == 1" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <NavLink :href="route('reports')" :active="route().current('reports')" class="uppercase">
+                                reports
+                            </NavLink>
+                            <NavLink :href="route('users')" :active="route().current('users')" class="uppercase">
+                                users
+                            </NavLink>
+                        </div>
                         
                         </div>
 
