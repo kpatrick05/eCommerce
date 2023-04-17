@@ -34,7 +34,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return Inertia::render('Dashboard');
     }
     )->name('dashboard');
@@ -57,8 +57,10 @@ Route::post('/webhook/stripe', [WebhookController::class, 'webhook'])->name('web
 Route::middleware(['admin'])->group(function () { 
     Route::get('/reports', [AdminController::class, 'index']
     )->name('reports');
-    Route::get('/users', [AdminController::class, 'user']
+    Route::get('/manage/users', [AdminController::class, 'user']
     )->name('users');
+    Route::get('/manage/products', [AdminController::class, 'products']
+    )->name('manage.products');
     Route::get('/product/{id}', [AdminController::class, 'edit']
     )->name('product.edit');
     Route::put('/product/{id}', [AdminController::class, 'update']

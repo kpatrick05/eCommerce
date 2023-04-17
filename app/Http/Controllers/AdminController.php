@@ -16,10 +16,19 @@ class AdminController extends Controller
     }
     public function user() {
 
-        $users = User::get();
+        $users = User::where('name', 'LIKE', '%Ton%')->get();
 
         return Inertia::render('ManageUsers', [
             'users' => $users
+        ]);
+
+    }
+    public function products() {
+
+        $products = Product::get();
+
+        return Inertia::render('ManageProducts', [
+            'products' => $products
         ]);
 
     }
