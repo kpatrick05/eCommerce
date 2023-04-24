@@ -59,11 +59,18 @@ Route::middleware(['admin'])->group(function () {
     )->name('reports');
     Route::get('/manage/users', [AdminController::class, 'user']
     )->name('users');
+    Route::post('/manage/users', [AdminController::class, 'search']
+    )->name('users.search');
     Route::get('/manage/products', [AdminController::class, 'products']
     )->name('manage.products');
     Route::get('/product/{id}', [AdminController::class, 'edit']
     )->name('product.edit');
     Route::put('/product/{id}', [AdminController::class, 'update']
     )->name('product.update');
+    Route::get('/create/product', [AdminController::class, 'create']
+    )->name('product.create');
+    Route::post('/create/product/store', [AdminController::class, 'store']
+    )->name('product.store');
+
 });
 

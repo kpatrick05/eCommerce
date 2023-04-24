@@ -1,24 +1,3 @@
-<!--
-This example requires some changes to your config:
-
-```
-// tailwind.config.js
-module.exports = {
-  // ...
-  theme: {
-    extend: {
-      gridTemplateRows: {
-        '[auto,auto,1fr]': 'auto auto 1fr',
-      },
-    },
-  },
-  plugins: [
-    // ...
-    require('@tailwindcss/aspect-ratio'),
-  ],
-}
-```
--->
 <template>
   <AppLayout>
     <font-awesome-icon icon="fa-solid fa-cart-shopping" />
@@ -27,7 +6,7 @@ module.exports = {
         <!-- Image gallery -->
         <div class="mx-auto w-2/4">
           <div class="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-            <img :src="product.image" 
+            <img  v-if="product.image" :src="imageUrl" 
               class="h-full w-full object-cover object-center" />
           </div>
         </div>
@@ -84,14 +63,17 @@ import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue'
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3'
 import swal from 'sweetalert';
+import axios from 'axios';
+
+
 
 const props =defineProps({
   product : Object
 })
 
 const { product } = props;
-console.log(product.title);
 
+const imageUrl = window.location.origin + product.image;
 
 
 function success() {

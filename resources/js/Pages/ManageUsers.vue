@@ -1,24 +1,32 @@
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch} from 'vue'
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link, useForm } from '@inertiajs/vue3';
 
 
 const props = defineProps({
-	users: Object
+	users: Object,
 })
+
+let search= ref('');
 
 
 const form = useForm({
-  users : props.users
-});
+	search : ''
+})
+
+const submit  = () => {
+  form.post(route("users.search", form.search));
+};
+
 
 </script>
 
 
 <template>
 	<AppLayout>
+
 
 		<!-- component -->
 		<div class="bg-white p-8 rounded-md w-full">
@@ -28,7 +36,8 @@ const form = useForm({
 
 				</div>
 				<div >
-						<form>
+
+					<form @keyup="submit">
 							<label for="default-search"
 								class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
 							<div class="relative">
@@ -39,13 +48,14 @@ const form = useForm({
 										d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
 									</svg>
 								</div>
-								<input type="search" id="default-search"
+								<input  v-model="form.search" type="text"
 									class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 									placeholder="Search Mockups, Logos..." required>
-								<button type="submit"
-									class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+								<!-- <button @click="submitForm"
+									class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
 							</div>
 						</form>
+
 
 						<!-- <input class="bg-gray-50 outline-none ml-1 block " type="text" name="" id="" placeholder="search..."> -->
 					<!-- <div class="lg:ml-40 ml-10 space-x-8">

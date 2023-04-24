@@ -345,7 +345,7 @@ const navLinks = ["dashboard", "products", "cart"]
 
                                         <UsersIcon class="h-6 w-6 text-black-500" />
                                         <span>
-                                            <LinkAdmin :href="route('users')" :active="route().current('users')">
+                                            <LinkAdmin :href="route('users' || 'users.search')" :active="route().current('users' || 'users.search')">
                                                 Users
                                             </LinkAdmin>
                                         </span>
